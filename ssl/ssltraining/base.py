@@ -1,5 +1,3 @@
-# reference for gradient accumulation: https://kozodoi.me/blog/20210219/gradient-accumulation
-
 import os
 import time
 import math
