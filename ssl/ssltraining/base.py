@@ -145,7 +145,7 @@ class TrainSSL:
         )
 
         # train split of the dataset for evaluation
-        train_dataset = ImageDataset(vit_base
+        train_dataset = ImageDataset(
             image_paths=train_paths,
             labels=train_labels,
             loader=npy_loader,
