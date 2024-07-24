@@ -13,12 +13,18 @@ Following is the evaluation results computed over a held-out test dataset.
 
 # Self-Supervised Learning 
 
-A backbone network can be trained through self-supervision as follows:
+To run self supervised training, clone this repository and create a config file with the experiment parameters. The config file is expected to be a .yaml file. <br>
+Examples of the config files are provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/configs"> configs </a> folder.
+Currently, ViT-S and ViT-B for the backbone and SimSiam, DINO and iBOT algorithms for self supervised training have been implemented
 
-        python ssltrain.py /path/to/config/file
+While inside the directory, activate the virtual environment and install the required packages.
 
-The config file is expected to be a .yaml file. <br>
-Examples of the config files are provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/ssl/configs"> configs </a> folder
+        source ./venv/bin/activate
+        pip install -r requirements.txt
+
+The specified network can then be trained through self-supervision as follows:
+
+        python ./ssl/ssltrain.py /path/to/config/file
 
 For self-supervised learning, the ViT backbone is trained on the training dataset without the label information. The hyperparameters are chosen such that the K-NN accuracy computed over the representations obtained for the validation dataset is maximized. For evaluating the learned network, the backbone followed by a linear classifier is finetuned on the train dataset (with label information) and then evaluated over the held-out test dataset.<br>
 

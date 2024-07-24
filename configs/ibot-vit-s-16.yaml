@@ -3,14 +3,14 @@ experiment:
   device: cuda 
   expt_name: ibot_vit_small # experiment name
   log_freq: 20 # knn accuracy is computed every `log_freq` epochs, additionally the trained model is also saved
-  output_dir: ../working/1407/ibot_vit_small # output results to this folder - files: logs.txt, {experiment_name}_models
+  output_dir: ./working/1407/ibot_vit_small # output results to this folder - files: logs.txt, {experiment_name}_models
   ssl_training: ibot # training strategy to use
   use_mixed_precision: true # if true uses fp16 for training, improves training speed
 # input image parameters
 input:
   channels: 3 # num channels in input image
-  data path: ../input/real_lenses_dataset # path/to/dataset
-  indices: ../input/indices.pkl 
+  data path: ./input/real_lenses_dataset # path/to/dataset
+  indices: ./input/indices.pkl
   image size: 
   - 64 # image height to perform center crop
   - 64 # image width to perform center crop

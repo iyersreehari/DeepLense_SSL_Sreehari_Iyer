@@ -9,7 +9,6 @@ import torchvision.transforms as Transforms
 from torchvision import datasets
 from torch.utils.data import DataLoader, Dataset
 from utils import get_system_info, set_seed
-# from models import vit_backbone
 from ssltraining.dino import TrainDINO
 from ssltraining.ibot import TrainIBOT
 from ssltraining.swav import TrainSWAV

@@ -1,23 +1,23 @@
 experiment:
   seed: 12
   device: cuda 
-  expt_name: simsiam_vit_base # experiment name
+  expt_name: simsiam_vit_small # experiment name
   log_freq: 20 # knn accuracy is computed every `log_freq` epochs, additionally the trained model is also saved
-  output_dir: ../working/1407/simsiam_vit_base # output results to this folder - files: logs.txt, {experiment_name}_models
+  output_dir: ./working/1407/simsiam_vit_small # output results to this folder - files: logs.txt, {experiment_name}_models
   ssl_training: simsiam # training strategy to use
   use_mixed_precision: true # if true uses fp16 for training, improves training speed
 # input image parameters
 input:
   channels: 3 # num channels in input image
-  data path: ../input/real_lenses_dataset # path/to/dataset
-  indices: ../input/indices.pkl 
+  data path: ./input/real_lenses_dataset # path/to/dataset
+  indices: ./input/indices.pkl
   image size: 
   - 64 # image height to perform center crop
   - 64 # image width to perform center crop
   num classes: 2
 # training network parameters
 network:
-  backbone: vit_base # backbone network
+  backbone: vit_small # backbone network
   projector_head_hidden_dim: 512 
   head_output_dim: 2048
   projector_head_nlayers: 3
@@ -25,10 +25,10 @@ network:
   predictor_head_hidden_dim: 512
   patch_size: 16
 optimizer:
-  init_lr: 0.05
+  init_lr: 0.05 
   init_wd: 0.0001 
-  final_lr: 0.000005 
-  final_wd: 0.0001
+  final_lr: 0.0005 
+  final_wd: 0.0001 
   optimizer: SGD
   scheduler_warmup_epochs: 0
   clip_grad_magnitude: 0. # check
@@ -47,7 +47,7 @@ ssl augmentation kwargs:
 # training parameters
 train args:
   knn_neighbours: 20
-  batch_size: 128
+  batch_size: 512
   num_epochs: 100
   freeze_last_layer: 0
   train_val_split: 
