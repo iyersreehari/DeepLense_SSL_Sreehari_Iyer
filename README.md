@@ -17,9 +17,8 @@ To run self supervised training, clone this repository and create a config file 
 Examples of the config files are provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/configs"> configs </a> folder.
 Currently, ViT-S and ViT-B for the backbone and SimSiam, DINO and iBOT algorithms for self supervised training have been implemented
 
-While inside the directory, activate the virtual environment and install the required packages.
+While inside the directory, install the required packages.
 
-        source ./venv/bin/activate
         pip install -r requirements.txt
 
 The specified network can then be trained through self-supervision as follows:
