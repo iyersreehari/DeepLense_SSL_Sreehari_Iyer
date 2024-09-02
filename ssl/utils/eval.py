@@ -104,3 +104,57 @@ def plot_cm_roc(output, y):
     ax[1].set_title('ROC AUC Curves')
     plt.tight_layout()
     plt.show()
+
+def train(
+        model,
+        train_loader,
+        val_loader,
+        criterion,
+        optimizer,
+        num_epochs: int = 100,
+        scheduler: Optional = None,
+        device: str = "cuda"
+    ):
+    model = model.to(device)
+    best_loss, best_val_loss, best_acc, best_model = None, None, None, None
+    for epoch in range(num_epochs):
+        model.train()
+        running_loss = 0.0
+        for inputs, labels in train_loader:
+            inputs, labels = inputs.to(device), labels.to(device)
+            optimizer.zero_grad()
+            outputs = model(inputs)
+            loss = criterion(outputs, labels)
+            loss.backward()
+            optimizer.step()
+            running_loss += loss.item()
+        if scheduler is not None:
+            scheduler.step()
+
+        model.eval()
+        val_loss = 0.0
+        correct = 0
+        total = 0
+
+        with torch.no_grad():
+            for inputs, labels in val_loader:
+                inputs, labels = inputs.to(device), labels.to(device)
+                outputs = model(inputs)
+                loss = criterion(outputs, labels)
+                val_loss += loss.item()
+                predicted = np.argmax(outputs.cpu().numpy(), axis=-1)
+                # val_preds.extend(predicted.tolist())
+                # val_y.extend(labels.tolist())
+                total += labels.size(0)
+                correct += (np.count_nonzero(predicted == labels.cpu().numpy()))
+        val_loss = val_loss/len(val_loader)
+        acc = 100 * correct / total
+        if best_val_loss is None or best_val_loss > val_loss:
+            best_val_loss = val_loss
+            best_loss = running_loss / len(train_loader)
+            best_model = copy.deepcopy(model)
+            best_acc = acc
+        print(f'[{epoch+1}/{num_epochs}] Train Loss: {(running_loss / len(train_loader)):.4f}, '
+              f'Val Loss: {val_loss:.4f}, '
+              f'Val Accuracy: {acc:.2f}%\n')
+    return model, best_model
