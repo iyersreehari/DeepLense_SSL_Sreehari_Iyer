@@ -127,7 +127,8 @@ class TrainSSL:
             image_paths=train_paths,
             labels=train_labels,
             loader=npy_loader,
-            transform=data_augmentation_transforms
+            transform=data_augmentation_transforms,
+            return_indices=True,
         ) if not masked_loader else \
         ImageDatasetMasked(
             image_paths=train_paths,
@@ -147,7 +148,8 @@ class TrainSSL:
             image_paths=train_paths,
             labels=train_labels,
             loader=npy_loader,
-            transform=eval_transforms
+            transform=eval_transforms,
+            return_indices=True,
         ) if not masked_loader else \
         ImageDatasetMasked(
             image_paths=train_paths,
@@ -166,7 +168,8 @@ class TrainSSL:
             image_paths=val_paths,
             labels=val_labels,
             loader=npy_loader,
-            transform=eval_transforms
+            transform=eval_transforms,
+            return_indices=True,
         ) if not masked_loader else \
         ImageDatasetMasked(
             image_paths=val_paths,
@@ -185,7 +188,8 @@ class TrainSSL:
             image_paths=test_paths,
             labels=test_labels,
             loader=npy_loader,
-            transform=eval_transforms
+            transform=eval_transforms,
+            return_indices=True,
         ) if not masked_loader else \
         ImageDatasetMasked(
             image_paths=test_paths,
@@ -359,12 +363,13 @@ class TrainSSL:
     #--------------------------------------------------------------------------------------------------------
             img, mask = None, None 
             imgs, label, msk = None, None, None 
+            indices = None
             if self.masked_loader:
                 imgs, label, msk = input
                 img = [im.to(self.device, non_blocking=True) for im in imgs]
                 mask = [im.to(self.device, non_blocking=True) for im in msk]
             else:
-                imgs, label = input
+                imgs, label, indices = input
                 img = [im.to(self.device, non_blocking=True) for im in imgs]
     #--------------------------------------------------------------------------------------------------------
 
@@ -372,7 +377,7 @@ class TrainSSL:
             with torch.cuda.amp.autocast(self.fp16_scaler is not None):
                 teacher_output = self.forward_teacher(img) if self.teacher is not None else None
                 _img = (img, mask) if mask is not None else img
-                student_output = self.forward_student(_img)
+                student_output = self.forward_student(_img, labels=label, indices=indices)
                 loss = self.compute_loss_epoch(student_output=student_output, teacher_output=teacher_output, mask=mask)
                 losses.append(loss.item())
     
