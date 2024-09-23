@@ -7,10 +7,10 @@ import torch
 import torch.nn as nn
 from torchvision import datasets
 from torch.utils.data import random_split, DataLoader, Dataset
-from utils import knn_accuracy
+from selfsupervised.utils import knn_accuracy
 import datetime
 from typing import List, Dict, Union, Callable 
-from augmentations import ImageDataset, ImageDatasetMasked
+from selfsupervised.augmentations import ImageDataset, ImageDatasetMasked
 
 def npy_loader(path):
     sample = torch.from_numpy(np.load(path))
@@ -46,7 +46,7 @@ class TrainSSL:
             masked_loader: bool = False,
             **kwargs,
         ):
-SSSSS
+
         self.masked_loader = masked_loader
         self.output_dir = output_dir
         self.expt_name = expt_name

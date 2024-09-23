@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torchvision.transforms as Transforms
-from models.MLP import MLP
+from selfsupervised.models.MLP import MLP
 from torchvision import datasets
 from torch.utils.data import DataLoader
 from sklearn.metrics import confusion_matrix, accuracy_score, roc_auc_score, precision_recall_fscore_support
@@ -11,7 +11,6 @@ from typing import List
 from prettytable import PrettyTable
 from sklearn.metrics import confusion_matrix, roc_curve, auc, RocCurveDisplay, ConfusionMatrixDisplay
 import copy
-import matplotlib.pyplot as plt
 from typing import Optional, List
 
 def npy_loader(path):
@@ -85,25 +84,6 @@ def test_(
     print(t)
 
     return output, y_true, acc, auc
-
-def plot_cm_roc(output, y):
-    y_score = np.array(output)[:,1]
-    y = np.array(y)
-
-    fpr, tpr, _ = roc_curve(y, y_score)
-    roc_auc = auc(fpr, tpr)
-    
-    fig, ax = plt.subplots(1, 2, figsize=(15, 6))
-    
-    cm = confusion_matrix(y, np.argmax(np.array(output), axis=-1))
-    ConfusionMatrixDisplay(cm).plot(ax=ax[0])
-    ax[0].set_title('Confusion Matrix')
-    
-    RocCurveDisplay(fpr=fpr, tpr=tpr, roc_auc=roc_auc, estimator_name=f'Class Lenses').plot(ax=ax[1])
-    
-    ax[1].set_title('ROC AUC Curves')
-    plt.tight_layout()
-    plt.show()
 
 def train(
         model,

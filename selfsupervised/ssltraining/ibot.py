@@ -3,9 +3,9 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
 from .base import TrainSSL
-from models import MultiCropWrapper, iBOTHead
-from losses import iBOTLoss
-from utils import cosine_scheduler
+from selfsupervised.models import MultiCropWrapper, iBOTHead
+from selfsupervised.losses import iBOTLoss
+from selfsupervised.utils import cosine_scheduler
 from typing import List, Dict, Union, Optional, Tuple
 
 class TrainIBOT(TrainSSL):
