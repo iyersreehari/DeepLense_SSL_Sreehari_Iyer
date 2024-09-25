@@ -38,8 +38,8 @@ For self-supervised learning, the ViT backbone is trained on the training datase
 
 The pretrained models can then be fine-tuned with the labeled dataset. The indices list for different count of labeled data is provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/input"> input </a> folder.
 The notebooks in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/notebooks"> notebooks </a> folder provide examples for fine-tuning the pre-trained models.<br>
-
-Following is the evaluation results computed over a held-out test dataset for fine-tuning of DINO pre-trained models.
+<br>
+Following is the evaluation results computed over a held-out test dataset for fine-tuning of **DINO** pre-trained models.
 |Backbone | # labelled data for <br> training/fine-tuning | Accuracy | AUC |
 |:---:|:----------:|:----------:|:----------:|
 |ViT-S (patch size: 8)|300 | 88.1956% | 0.9382 |
@@ -51,7 +51,8 @@ Following is the evaluation results computed over a held-out test dataset for fi
 |ViT-S (patch size: 8)|3256 | 92.4115% | 0.9806 |
 |ViT-B (patch size: 8)|3256 | 94.6037% | 0.9810 |
 
-Following is the evaluation results computed over a held-out test dataset for fine-tuning of iBot pre-trained models.
+<br>
+Following is the evaluation results computed over a held-out test dataset for fine-tuning of **iBot** pre-trained models.
 |Backbone | # labelled data for <br> training/fine-tuning | Accuracy | AUC |
 |:---:|:----------:|:----------:|:----------:|
 |ViT-S (patch size: 8)|300 | 88.5329% | 0.9367 |
@@ -62,5 +63,14 @@ Following is the evaluation results computed over a held-out test dataset for fi
 |ViT-B (patch size: 8)|1200 | 90.7251% | 0.9698 |
 |ViT-S (patch size: 8)|3256 | 92.9174% | 0.9798 |
 |ViT-B (patch size: 8)|3256 | 93.0860% | 0.9786 |
+
+<br>
+# References
+
+Dosovitskiy, Alexey, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. International Conference on Learning Representations. 2020.
+Caron, Mathilde, et al. Emerging properties in self-supervised vision transformers. Proceedings of the IEEE/CVF international conference on computer vision. 2021.
+<a href="https://github.com/facebookresearch/dino"> DINO github repository </a>
+Zhou, Jinghao, et al. ibot: Image bert pre-training with online tokenizer. International Conference on Learning Representations (ICLR) (2022).
+<a href="https://github.com/bytedance/ibot"> iBot github repository </a>
 
 
