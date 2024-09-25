@@ -68,6 +68,7 @@ Following is the evaluation results computed over a held-out test dataset for fi
 |ViT-B (patch size: 8)|3256 | 93.0860% | 0.9786 |
 
 <br>
+
 # References
 
 Dosovitskiy, Alexey, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. International Conference on Learning Representations. 2020.
