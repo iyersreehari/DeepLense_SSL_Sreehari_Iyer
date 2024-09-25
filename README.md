@@ -71,10 +71,10 @@ Following is the evaluation results computed over a held-out test dataset for fi
 
 # References
 
-Dosovitskiy, Alexey, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. International Conference on Learning Representations. 2020.
-Caron, Mathilde, et al. Emerging properties in self-supervised vision transformers. Proceedings of the IEEE/CVF international conference on computer vision. 2021.
-<a href="https://github.com/facebookresearch/dino"> DINO github repository </a>
-Zhou, Jinghao, et al. ibot: Image bert pre-training with online tokenizer. International Conference on Learning Representations (ICLR) (2022).
-<a href="https://github.com/bytedance/ibot"> iBot github repository </a>
+- Dosovitskiy, Alexey, et al. An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. International Conference on Learning Representations. 2020.
+- Caron, Mathilde, et al. Emerging properties in self-supervised vision transformers. Proceedings of the IEEE/CVF international conference on computer vision. 2021.
+- <a href="https://github.com/facebookresearch/dino"> DINO github repository </a>
+- Zhou, Jinghao, et al. ibot: Image bert pre-training with online tokenizer. International Conference on Learning Representations (ICLR) (2022).
+- <a href="https://github.com/bytedance/ibot"> iBot github repository </a>
 
 
