@@ -23,8 +23,8 @@ Following is the evaluation results for supervised baselines computed over a hel
 # Self-Supervised Learning 
 
 To run self supervised training, clone this repository and create a config file with the experiment parameters. The config file is expected to be a .yaml file. <br>
-Update the `data path` field in the config file with the path to the dataset downloaded previously.
 Examples of the config files are provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/configs"> configs </a> folder.
+Update the `data path` field in the config file with the path to the dataset downloaded previously.
 Currently, ViT-S and ViT-B for the backbone and DINO and iBOT algorithms for self supervised training have been implemented
 
 Inside the directory, install the required packages.
