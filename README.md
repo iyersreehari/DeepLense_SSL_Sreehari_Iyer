@@ -33,7 +33,7 @@ Inside the directory, install the required packages.
 
 The specified network can then be trained through self-supervision as follows:
 
-        python ./ssl/ssltrain.py /path/to/config/file
+        python ./ssltrain.py /path/to/config/file
 
 For self-supervised learning, the ViT backbone is trained on the training dataset without the label information. The hyperparameters are chosen such that the K-NN accuracy computed over the representations obtained for the validation dataset is maximized. For evaluating the learned network, the backbone followed by a linear classifier is finetuned on the train dataset (with label information) and then evaluated over the held-out test dataset. The trained models are saved in the output directory specified in the config file.<br>
 
