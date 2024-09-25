@@ -3,7 +3,7 @@ This repository contains the code for my ongoing project with <a href = "https:/
 
 This project focuses on evaluating of self-supervised learning techniques with Transformers utilizing real-world strong gravitational lensing dataset. The learned representations are then evaluated on the downstream task to classify lens and non-lens images. <br>
 
-Before training, download the lenses dataset from <a href = "https://drive.google.com/drive/folders/1JHEQFgyGedSm0pVfYH66cHmYOqlqm992?usp=sharing"> drive </a> and the nonlenses dataset from <a href = "https://drive.google.com/drive/folders/11vdOCZKp3tt-Ls-1d8xIfoXgyuLmL9S9?usp=sharing"> drive </a> and place them in lenses and nonlenses subdirectories respectively. Update the `data path` field in the config file with the path to the dataset.<br>
+Before training, download the lenses dataset from <a href = "https://drive.google.com/drive/folders/1JHEQFgyGedSm0pVfYH66cHmYOqlqm992?usp=sharing"> drive </a> and the nonlenses dataset from <a href = "https://drive.google.com/drive/folders/11vdOCZKp3tt-Ls-1d8xIfoXgyuLmL9S9?usp=sharing"> drive </a> and place them in lenses and nonlenses subdirectories respectively. <br>
 The dataset contains 1949 lens images and 2000 non-lens images. Each image has 3 channels, g, r and i, corresponding to green, red and infrared filters respectively. The images are center cropped to 32 × 32 pixel as this empirically resulted in better prediction accuracy. <br>
 To understand how well SSL works with different fractions of labelled and unlabelled data, the models are pre-trained through self supervision on the entire data and then finetuned on the labelled fraction and compared with supervised baseline trained only on that labeled fraction. <br>
 
@@ -23,6 +23,7 @@ Following is the evaluation results for supervised baselines computed over a hel
 # Self-Supervised Learning 
 
 To run self supervised training, clone this repository and create a config file with the experiment parameters. The config file is expected to be a .yaml file. <br>
+Update the `data path` field in the config file with the path to the dataset downloaded previously.
 Examples of the config files are provided in the <a href="https://github.com/iyersreehari/DeepLense_SSL_Sreehari_Iyer/tree/main/configs"> configs </a> folder.
 Currently, ViT-S and ViT-B for the backbone and DINO and iBOT algorithms for self supervised training have been implemented
 
